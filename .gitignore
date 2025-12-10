@@ -48,15 +48,7 @@
 **/*.iws
 
 # IntelliJ
-!**/.idea/
-**/.idea/.name
-**/.idea/vcs.xml
-**/out/
-**/target/
-**/build/
-**/classes/
-**/*.class
-**/*.jar
+**/.idea/
 
 # Eclipse
 !**/.project
@@ -71,7 +63,8 @@ Thumbs.db
 *.tmp
 *~
 
-**/Untracked_Zip_Files/*
+# Python
+**/__pycache__/
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
 
