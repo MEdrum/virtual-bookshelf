@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "home",
+    "settings",
+    "loan_request",
+    "bookshelf",
     "pages.apps.PagesConfig",
     "projects.apps.ProjectsConfig",
     "django.contrib.admin",
