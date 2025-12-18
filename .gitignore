@@ -49,6 +49,8 @@
 
 # IntelliJ
 **/.idea/
+**/.venv/
+**/__pycache__/
 
 # Eclipse
 !**/.project
@@ -63,8 +65,7 @@ Thumbs.db
 *.tmp
 *~
 
-# Python
-**/__pycache__/
+**/Untracked_Zip_Files/*
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
 
