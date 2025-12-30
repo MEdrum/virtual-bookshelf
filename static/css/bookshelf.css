@@ -1,0 +1,32 @@
+nav img{
+    width: 50px;
+    height: 50px;
+}
+
+.carousel {
+    width: 100%;
+    overflow-x: auto;
+    margin: 3em auto;
+    display: flex;
+    gap: 1em;
+}
+
+.carousel::-webkit-scrollbar{
+    display: none;
+}
+
+.carousel::scroll-button(right){
+    content: "right";
+}
+
+.card{
+    flex: 0 0 13em;
+    height: 20em;
+    color: var(--foreground-color);
+    background-color: var(--background-color);
+    border-radius: .5em;
+    padding: 1em;
+    text-align: center;
+    align-content: center;
+    scroll-snap-stop: always;
+}

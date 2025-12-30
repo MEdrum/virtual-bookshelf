@@ -1,0 +1,252 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: white;
+        --background-color: #0a0014;
+        --primary-color: #440084;
+        --secondary-color: none;
+        --font-family: Courier;
+        --font-size: 14pt;
+    }
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --text-color: black;
+        --background-color: #f7e7ff;
+        --primary-color: #440084;
+        --secondary-color: none;
+        --font-family: Courier;
+        --font-size: 14pt;
+    }
+}
+@media print{
+    :root {
+        --background-color: white;
+        --text-color: black;
+        --primary-color: #440084;
+        --secondary-color: none;
+        --font-family: Courier;
+        --font-size: 8pt;
+    }
+    nav,
+    fieldset:has(.contact-form),
+    footer{
+        display: none !important;
+    }
+    fieldset {
+        border: none !important;
+    }
+    img {
+        width: 40% !important; 
+    }
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+}
+
+/* 
+I used these references to create a "button" to switch between light and dark mode: 
+https://dev.to/mardeg/toggle-dark-mode-using-divless-pure-css-2nkl
+https://stackoverflow.com/questions/19927813/make-a-checkbox-look-like-a-button-css
+what I used from this source:
+    - the idea to hide a checkbox and restyle a label as a button
+    - cursor
+    - user-select
+*/
+.hidden {
+    display:none;
+}
+input[type=checkbox]+.button-label {
+    color: #f89aff;
+    background-color: #2a2a2a;
+    font-style: italic;
+}
+input[type=checkbox]:checked+.button-label {
+    color: #720094;
+    background-color: #bbbbbb;
+    font-style: normal;
+}
+.button-label {
+    background-color: #2a2a2a;
+    color: #f89aff;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #440084;
+    user-select: none;
+}
+
+
+/* 
+I used this reference to achieve my desired table styling: https://stackoverflow.com/questions/4094126/how-to-add-a-border-radius-on-a-table-row 
+what I used from this source:
+    - border-spacing (the spacing between adjacent borders)
+    - overflow (the corner part outside of rounded corners)
+    - the idea to round the four corners seperately
+*/
+table, th, td {
+    border-spacing: 0;
+    min-width: 200px;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+table{
+    border-radius: 10px;
+    width: 85%;
+    margin: 40px;
+    max-width: 600px;
+}
+th, td {
+    padding: 7px;
+    color: white;
+    border: 1px solid grey;
+}
+th{
+    background-color: #ae00ff;
+}
+tr:nth-child(odd){
+    background-color: black;
+}
+tr:nth-child(even){
+    background-color: #171717;
+}
+
+tr:first-child th:first-child { border-top-left-radius: 10px; }
+tr:first-child th:last-child { border-top-right-radius: 10px; }
+
+tr:last-child td:first-child { border-bottom-left-radius: 10px; }
+tr:last-child td:last-child { border-bottom-right-radius: 10px; }
+
+
+
+
+a:link {
+    color: #64d8ff;
+}
+a:visited {
+    color: violet;
+}
+a:hover {
+    color: #efc3ff;
+}
+
+
+
+mark {
+    background-color: #ffee004f
+}
+
+
+/* https://www.shecodes.io/athena/627044-understanding-css-hover-transitions-with-inline-display 
+what I used from this source:
+    - transition
+    - transform
+*/
+img{
+    display: inline-block;
+    /*margin: 40px;
+    margin-right: auto;
+    width: 50%;
+    max-width: 600px;*/
+    border-radius: 10px;
+    transition: 0.3s;
+}
+img:hover{
+    transform: scale(1.1);
+}
+
+
+
+.flex_container{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 40%;
+}
+main .flex_container *:not(h2){
+    margin-right: 40px;
+}
+
+
+.large{
+    flex: 99 99 55%;
+}
+.medium{
+    flex: 99 99 45%;
+}
+.small{
+    flex: 99 99 35%;
+}
+
+
+
+fieldset {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid #ae00ff;
+    margin: 10px;
+}
+fieldset *{
+    margin-top: 0%;
+}
+fieldset p{
+    margin-left: 40px;
+}
+
+
+
+
+input, select {
+    min-width: 40%;
+    padding: 10px;
+    background-color:#f7e7ff;
+    border-radius: 10px;
+    border: 2px solid #440084;
+    margin: 2px;
+}
+
+.search {
+    display: flex inline;
+    max-width: 300px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.contact-form {
+    max-width: 600px;
+    width: 100%;
+    padding: 40px;
+    padding-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.contact-form label {
+    display: inline-block;
+    width: 50%;
+    margin: 5px;
+}
+.contact-form input[type=radio],
+.contact-form input[type=checkbox] {
+    display: inline-block;
+    min-width: 20%;
+    max-width: 30%;
+    width: auto;
+    max-width: none;
+    padding: 0;
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+.contact-form input[type=submit] {
+    width: 100%;
+    background-color: #ae00ff;
+    color: white;
+    padding: 14px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
