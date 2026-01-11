@@ -16,7 +16,7 @@ class Book(models.Model):
         "2": "public",
     }
     borrowable = models.BooleanField(default=True)
-    ownerID = models.ForeignKey('home.User', on_delete=models.CASCADE)
+    ownerID = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     shelfID = models.ForeignKey('Shelf', on_delete=models.CASCADE)
     coverURL = models.URLField(blank=True, null=True)
 
@@ -27,7 +27,7 @@ class Book(models.Model):
 class Shelf(models.Model):
     shelfID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
-    ownerID = models.ForeignKey('home.User', on_delete=models.CASCADE)
+    ownerID = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
 
