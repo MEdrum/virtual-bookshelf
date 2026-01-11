@@ -6,7 +6,7 @@
         <div class="carousel">
             {% for book in bookshelf.book_set.all %}
             <div class="book">
-                <a href="/book/{{ bookshelf.name }}/{{ book.isbn }}">
+                <a href="/bookshelf/{{ bookshelf.shelfID }}/{{ book.isbn }}">
                     <img src={{ book.coverURL }}>
                 </a>
                 <h4>{{ book.title }}</h4>
