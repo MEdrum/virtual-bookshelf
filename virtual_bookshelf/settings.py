@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "home",
     "settings",
     "loan_request",
+    "friend_request",
     "bookshelf",
     "pages.apps.PagesConfig",
     "projects.apps.ProjectsConfig",
