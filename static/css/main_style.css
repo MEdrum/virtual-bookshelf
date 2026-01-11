@@ -183,7 +183,6 @@ main .flex_container *:not(h2){
 
 
 fieldset {
-    display: inline-block;
     padding: 5px;
     border-radius: 10px;
     border: 2px solid #ae00ff;
@@ -191,9 +190,6 @@ fieldset {
 }
 fieldset *{
     margin-top: 0%;
-}
-fieldset p{
-    margin-left: 40px;
 }
 
 

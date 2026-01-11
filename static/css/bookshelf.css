@@ -5,11 +5,12 @@ nav img{
 
 .carousel {
     width: 100%;
+    margin-left: 10px;
     overflow-x: auto;
-    margin: 3em auto;
     display: flex;
     gap: 1em;
 }
+
 
 .carousel::-webkit-scrollbar{
     display: none;
@@ -19,14 +20,35 @@ nav img{
     content: "right";
 }
 
-.card{
+.book{
     flex: 0 0 13em;
-    height: 20em;
+    padding: 0px;
+    width: 12em;
+    height: 24em;
     color: var(--foreground-color);
     background-color: var(--background-color);
     border-radius: .5em;
-    padding: 1em;
     text-align: center;
     align-content: center;
     scroll-snap-stop: always;
+}
+
+.book img{
+    width: 10em;
+    height: 15em;
+    object-fit: cover;
+}
+
+/*.book img:hover{
+
+}*/
+
+.bookcover{
+    width: 20em;
+    height: 30em;
+    object-fit: cover;
+}
+
+fieldset h3{
+    margin: 0;
 }

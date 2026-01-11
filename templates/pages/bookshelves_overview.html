@@ -1,39 +1,7 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-    <div class="carousel">
-        <div class="card">
-            test
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-        <div class="card">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-        </div>
-    </div>
+    {% for bookshelf in shelves %}
+        {% include "pages/bookshelves_book_row.html" with bookshelf=bookshelf %}
+    {% endfor %}
 {% endblock page_content %}
