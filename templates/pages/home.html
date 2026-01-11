@@ -10,13 +10,16 @@
     <a href="/bookshelf/">Bookshelves</a> </br>
     <a href="/friend_request/">Friend Requests</a> </br>
     <a href="/loan_request/">Loan Requests</a>
+    <p><a href="{% url 'password_change' %}">Change Password</a></p>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button type="submit">Log Out</button>
     </form>
     {% else %}
     <p>You are not logged in</p>
-    <a href="{% url 'login' %}">Log In</a>
+    <p><a href="{% url 'signup' %}">Sign up</a></p>
+    <p></p><a href="{% url 'login' %}">Log In</a></p>
+    <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
     {% endif %}
     {% endblock page_content %}
 
