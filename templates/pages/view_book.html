@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h3> 
+        <a href="/user/{{ shelf.ownerID }}">{{ shelf.ownerID }}</a> 
+        &gt 
+        <a href="/bookshelf/{{ shelf.shelfID }}">{{ shelf.name }}</a>
+    </h3>
+    <h1>{{ book.title }}</h1>
+    <img class="bookcover" src={{ book.coverURL }}>
+    <p> Author: {{ book.author }} </p>
+    <p> ISBN: {{ book.isbn }} </p>
+    <p> Genre: {{ book.genre }}</p>
+    <p> Language: {{ book.language }}</p>
+    <p> Pub. date: {{ book.year_of_publication }}</p>
+    <p> Borrowable: {{ book.borrowable }}</p>
+    <p> Visibility: {{ book.get_visibility_display }}</p>
+    
+    
+{% endblock page_content %}

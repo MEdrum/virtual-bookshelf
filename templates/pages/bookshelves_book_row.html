@@ -1,13 +1,19 @@
 <div class="book-row">
-    <h3>{{ bookshelf.name }}</h3>
-    <div class="carousel">
-        {% for book in bookshelf.book_set.all %}
-        <div class="book">
-            <img src="https://img.wattpad.com/cover/1565631-256-k125591.jpg">
-            <h4>{{ book.title }}</h4>
-            <p>Author: {{ book.author }}</p>
-            <!-- Add more book details as needed -->
-        </div>
-        {% endfor %}
+    <fieldset>
+        <legend>
+            <h3>{{ bookshelf.name }}</h3>
+        </legend>
+        <div class="carousel">
+            {% for book in bookshelf.book_set.all %}
+            <div class="book">
+                <a href="/book/{{ bookshelf.name }}/{{ book.isbn }}">
+                    <img src={{ book.coverURL }}>
+                </a>
+                <h4>{{ book.title }}</h4>
+                <p>Author: {{ book.author }}</p>
+                <!-- Add more book details as needed -->
+            </div>
+            {% endfor %}
+        </fieldset>
     </div>
 </div>
