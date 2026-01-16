@@ -17,7 +17,17 @@
             </nav>
         </header>
             <main>
+                {% if user.is_authenticated %}
                 {% block page_content %}{% endblock page_content %}
+                {% else %}
+                {% block authentication %}
+                    <p>You are not logged in</p>
+                    <p><a href="{% url 'signup' %}">Sign up</a></p>
+                    <p></p><a href="{% url 'login' %}">Log In</a></p>
+                    <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+                {% endblock authentication %}
+
+                {% endif %}
             </main>
         <footer>
 
