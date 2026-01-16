@@ -15,3 +15,10 @@ def view_book(request, shelfid, isbn):
     #shelves = Shelf.objects.prefetch_related(shelfid).all()
     #shelves = Shelf.objects.prefetch_related('book_set').all()
     return render(request, "pages/view_book.html", {"shelf": shelf, "book": book})
+
+def view_shelf(request, shelfid):
+    shelf = get_object_or_404(Shelf, shelfID=shelfid)
+    print("shelf", type(shelf))
+    #shelves = Shelf.objects.prefetch_related(shelfid).all()
+    #shelves = Shelf.objects.prefetch_related('book_set').all()
+    return render(request, "pages/bookshelf_view_shelf.html", {"bookshelf": shelf})
