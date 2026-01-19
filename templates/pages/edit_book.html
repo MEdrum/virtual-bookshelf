@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<h2>
+    {% if is_edit %}
+    Edit book
+    {% else %}
+    Add a new book
+    {% endif %}
+</h2>
+<h3>
+    <a href="/user/{{ shelf.ownerID }}">{{ shelf.ownerID }}</a>
+    &gt
+    <a href="/bookshelf/{{ shelf.shelfID }}">{{ shelf.name }}</a>
+</h3>
+
+
+<form class="contact-form" method = "post">
+    {% csrf_token %}
+    <label for="title">Titel:</label><br>
+    <input type="text" id="title" name="title" value="{{ book.title|default:'' }}"><br>
+    <label for="author">Author:</label><br>
+    <input type="text" id="author" name="author" value="{{ book.author|default:'' }}">
+    <label for="isbn">ISBN:</label><br>
+    <input type="text" id="isbn" name="isbn" value="{{ book.isbn|default:'' }}">
+    <label for="genre">Genre:</label><br>
+    <select name="genre" id="genre" >
+        <option value="romance">Romance</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="non-fiction">Non-fiction</option>
+        <option value="thriller">Thriller</option>
+    </select>
+    <label for="language">Language:</label><br>
+    <select name="language" id="language">
+        <option value="german">German</option>
+        <option value="english">English</option>
+        <option value="spanish">Spanish</option>
+    </select>
+    <label for="pubDate">Pub. date:</label><br>
+    <input type="date" id="pubDate" name="pubDate"><br>
+    <label for="borrowable">Borrowable?</label><br>
+    <input type="checkbox" id="borrowable" name="borrowable" checked><br>
+    <label for="visibility">Visibility:</label><br>
+    <select name="visibility" id="visibility">
+        <option value="public">Public</option>
+        <option value="friends">Friends</option>
+        <option value="private">Private</option>
+    </select>
+    <label for="coverURL">URL to cover:</label>
+    <input type="url" id="coverURL" name="coverURL" value="{{ book.coverURL|default:'' }}">
+    <input type="submit" value="Save">
+</form>
+
+{% endblock page_content %}

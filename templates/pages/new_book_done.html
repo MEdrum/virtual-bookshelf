@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+{% if is_edit %}
+<p>Book successfully edited!</p>
+{% else %}
+<p>Book successfully created!!</p>
+{% endif %}
+<p><a href="{% url 'bookshelves' %}">Back to my bookshelves</a></p>
+{% endblock page_content %}
