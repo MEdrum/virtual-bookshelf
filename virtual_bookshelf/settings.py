@@ -37,8 +37,6 @@ INSTALLED_APPS = [
     "friend_request",
     "bookshelf",
     "user",
-    "pages.apps.PagesConfig",
-    "projects.apps.ProjectsConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

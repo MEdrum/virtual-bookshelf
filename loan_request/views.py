@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from projects.models import Project
 
 def loan_requests_overview(request):
     return render(request, "pages/loan_requests_overview.html", {})
