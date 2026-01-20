@@ -3,10 +3,28 @@ from .models import Shelf, Book
 import uuid
 
 def bookshelves_overview(request):
+    """Renders the view bookshelves page
+
+    Args:
+        request (HttpRequest): An object containing the request details
+
+    Returns:
+        HttpResponse: Return an HttpResponse whose content is filled with the result of calling django.template.loader.render_to_string() with the passed arguments.
+    """
     shelves = Shelf.objects.prefetch_related('book_set').all()
     return render(request, "pages/bookshelves_overview.html", {"shelves": shelves})
 
 def view_book(request, shelfid, isbn):
+    """Renders the view book page
+
+    Args:
+        request (HttpRequest): An object containing the request details
+        shelfid (String): Unique identifier (UUID) for the bookshelf
+        isbn (String): Unique identifier (UUID OR ISBN) for the book
+
+    Returns:
+        HttpResponse: Return an HttpResponse whose content is filled with the result of calling django.template.loader.render_to_string() with the passed arguments.
+    """
     shelf = get_object_or_404(Shelf, shelfID=shelfid)
     print("shelf", type(shelf))
     try:
@@ -18,6 +36,16 @@ def view_book(request, shelfid, isbn):
     return render(request, "pages/view_book.html", {"shelf": shelf, "book": book})
 
 def process_book_form(request, shelfid, bookid=None):
+    """Creates or edits a book depending on the optional atribute bookid
+
+    Args:
+        request (HttpRequest): An object containing the request details
+        shelfid (String): Unique identifier (UUID) for the bookshelf
+        bookid (String, optional): Unique identifier (UUID) for the book. Defaults to None.
+
+    Returns:
+        HttpResponse: Return an HttpResponse whose content is filled with the result of calling django.template.loader.render_to_string() with the passed arguments.
+    """
     shelf = get_object_or_404(Shelf, shelfID=shelfid)
 
     is_edit = bookid is not None
@@ -55,6 +83,15 @@ def process_book_form(request, shelfid, bookid=None):
     })
 
 def view_shelf(request, shelfid):
+    """Renders the view (singular) shelf page
+
+    Args:
+        request (HttpRequest): An object containing the request details
+        shelfid (String): Unique identifier (UUID) for the bookshelf
+
+    Returns:
+        HttpResponse: Return an HttpResponse whose content is filled with the result of calling django.template.loader.render_to_string() with the passed arguments.
+    """
     shelf = get_object_or_404(Shelf, shelfID=shelfid)
     print("shelf", type(shelf))
     #shelves = Shelf.objects.prefetch_related(shelfid).all()

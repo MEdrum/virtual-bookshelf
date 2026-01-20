@@ -2,6 +2,9 @@ from django.db import models
 import uuid
 
 class FriendRequest(models.Model):
+    """
+    Definies the FriendRequest datamodel
+    """
     friendID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     state = models.IntegerField(default=0)  # 0: pending, 1: accepted, -1: rejected
     requesterID = models.ForeignKey('home.User', on_delete=models.CASCADE, related_name='sent_friend_requests')
