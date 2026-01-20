@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "loan_request",
     "friend_request",
     "bookshelf",
+    "user",
     "pages.apps.PagesConfig",
     "projects.apps.ProjectsConfig",
     "django.contrib.admin",

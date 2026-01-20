@@ -2,6 +2,9 @@ from django.db import models
 import uuid
 
 class LoanRequest(models.Model):
+    """
+    Defines the LoanRequest datamodel
+    """
     loanID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     requesterID = models.ForeignKey('home.User', on_delete=models.CASCADE, related_name='requested_loans')
     receiverID = models.ForeignKey('home.User', on_delete=models.CASCADE, related_name='received_loans')

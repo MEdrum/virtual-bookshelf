@@ -3,6 +3,9 @@ import uuid
 from django.db import models
 
 class Book(models.Model):
+    """
+    Definition of the Book datamodel
+    """
     PRIVATE = "0"
     FRIENDS = "1"
     PUBLIC = "2"
@@ -35,6 +38,9 @@ class Book(models.Model):
 
 
 class Shelf(models.Model):
+    """
+    Definition of the Bookshelf datamodel
+    """
     shelfID = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     ownerID = models.ForeignKey('auth.User', on_delete=models.CASCADE)
