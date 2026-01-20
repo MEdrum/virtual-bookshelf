@@ -36,8 +36,8 @@
         <option value="english">English</option>
         <option value="spanish">Spanish</option>
     </select>
-    <label for="pubDate">Pub. date:</label><br>
-    <input type="date" id="pubDate" name="pubDate"><br>
+    <label for="pubYear">Pub. year:</label><br>
+    <input type="number" id="pubYear" name="pubYear" value="{{ book.year_of_publication|default:'' }}"><br>
     <label for="borrowable">Borrowable?</label><br>
     <input type="checkbox" id="borrowable" name="borrowable" checked><br>
     <label for="visibility">Visibility:</label><br>

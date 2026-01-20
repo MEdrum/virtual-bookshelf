@@ -35,7 +35,8 @@ def view_book(request, shelfid, isbn):
     #shelves = Shelf.objects.prefetch_related(shelfid).all()
     #shelves = Shelf.objects.prefetch_related('book_set').all()
     if book.year_of_publication:
-        book.year_of_publication = datetime.utcfromtimestamp(book.year_of_publication).strftime("%d.%m.%Y")
+        pass
+        #book.year_of_publication = datetime.utcfromtimestamp(book.year_of_publication).strftime("%d.%m.%Y")
     else:
         book.year_of_publication = "Unknown"
     return render(request, "pages/view_book.html", {"shelf": shelf, "book": book})
@@ -73,12 +74,13 @@ def process_book_form(request, shelfid, bookid=None):
         book.isbn = request.POST['isbn']
         book.genre = request.POST['genre']
         book.language = request.POST['language']
-        print("pubdate:", request.POST['pubDate'])
+        book.year_of_publication = request.POST['pubYear']
+        """ print("pubdate:", request.POST['pubDate'])
         if request.POST['pubDate']:
             dt = datetime.strptime(request.POST['pubDate'], "%Y-%m-%d").replace(tzinfo=timezone.utc)
             book.year_of_publication = int(dt.timestamp())
         else:
-            book.year_of_publication = 0
+            book.year_of_publication = 0 """
         book.visibility = request.POST['visibility']
         book.borrowable = 'borrowable' in request.POST
         book.coverURL = request.POST['coverURL']
