@@ -1,6 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Shelf, Book
 import uuid
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from .forms import ShelfForm
+
 
 def bookshelves_overview(request):
     """Renders the view bookshelves page
@@ -93,3 +97,24 @@ def view_shelf(request, shelfid):
     shelf = get_object_or_404(Shelf, shelfID=shelfid)
     print("shelf", type(shelf))
     return render(request, "pages/bookshelf_view_shelf.html", {"bookshelf": shelf})
+
+@login_required
+def add_bookshelf(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        latitude = request.POST.get("latitude")
+        longitude = request.POST.get("longitude")
+
+        Shelf.objects.create(
+            shelfID=uuid.uuid4(),
+            name=name,
+            latitude=latitude,
+            longitude=longitude,
+            ownerID=request.user
+        )
+
+        return redirect("bookshelves")
+
+    return render(request, "pages/create_shelf.html")
+
+

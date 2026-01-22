@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block page_content %}
+
+  <a href="{% url 'add-bookshelf' %}">Add Bookshelf</a>
+
     {% for bookshelf in shelves %}
         {% include "pages/bookshelves_book_row.html" with bookshelf=bookshelf %}
     {% endfor %}
