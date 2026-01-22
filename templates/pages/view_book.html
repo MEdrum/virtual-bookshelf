@@ -10,8 +10,8 @@
     <img class="bookcover" src={{ book.coverURL }}>
     <p> Author: {{ book.author }} </p>
     <p> ISBN: {{ book.isbn }} </p>
-    <p> Genre: {{ book.genre }}</p>
-    <p> Language: {{ book.language }}</p>
+    <p> Genre: {{ current_genre }}</p>
+    <p> Language: {{ current_language }}</p>
     <p> Pub. date: {{ book.year_of_publication }}</p>
     <p> Borrowable: {{ book.borrowable }}</p>
     <p> Visibility: {{ book.get_visibility_display }}</p>
