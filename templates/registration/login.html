@@ -7,6 +7,30 @@
     {% csrf_token %}
     {{ form }}
     <button type="submit">Log In</button>
+    </br>
+    </br>
+    </br>
+    <p>
+        <h2><label for="user-table" style="background-color: red; display: inline-block">Tip: The following test users already exist:</label></h2>
+        <table id="user-table">
+            <tr>
+                <th>Username:</th>
+                <th>Password:</th>
+            </tr>
+            <tr>
+                <td>Anna</td>
+                <td>Anna1234</td>
+            </tr>
+            <tr>
+                <td>Charlie</td>
+                <td>woozy chew reach wheat basil slang</td>
+            </tr>
+            <tr>
+                <td>Lucy</td>
+                <td>Lucy1234</td>
+            </tr>
+        </table>
+    </p>
 </form>
 
 {% endblock authentication %}
