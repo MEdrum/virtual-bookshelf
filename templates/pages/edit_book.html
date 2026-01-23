@@ -18,11 +18,11 @@
 <form class="contact-form" method = "post">
     {% csrf_token %}
     <label for="title">Titel:</label><br>
-    <input type="text" id="title" name="title" value="{{ book.title|default:'' }}"><br>
+    <input type="text" id="title" name="title" value="{{ book.title|default:'' }}" required><br>
     <label for="author">Author:</label><br>
-    <input type="text" id="author" name="author" value="{{ book.author|default:'' }}">
+    <input type="text" id="author" name="author" value="{{ book.author|default:'' }}" required>
     <label for="isbn">ISBN:</label><br>
-    <input type="text" id="isbn" name="isbn" value="{{ book.isbn|default:'' }}">
+    <input type="text" id="isbn" name="isbn" value="{{ book.isbn|default:'' }}" required>
     <label for="genre">Genre:</label><br>
     <select name="genre" id="genre" >
         {% for genre in genres %}
