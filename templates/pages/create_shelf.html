@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<h2>
+  {% if is_edit %}
+    Edit bookshelf
+  {% else %}
+    Add a new bookshelf
+  {% endif %}
+</h2>
+
+<form class="contact-form" method="post">
+  {% csrf_token %}
+
+  <label for="name">Bookshelf name:</label><br>
+  <input
+    type="text"
+    id="name"
+    name="name"
+    value="{{ shelf.name|default:'' }}"
+    required
+  ><br><br>
+
+  <label for="latitude">Latitude:</label><br>
+  <input
+    type="number"
+    id="latitude"
+    name="latitude"
+    step="0.000001"
+    value="{{ shelf.latitude|default:'' }}"
+    required
+  ><br><br>
+
+  <label for="longitude">Longitude:</label><br>
+  <input
+    type="number"
+    id="longitude"
+    name="longitude"
+    step="0.000001"
+    value="{{ shelf.longitude|default:'' }}"
+    required
+  ><br><br>
+
+  <input type="submit" value="Save">
+</form>
+
+{% endblock page_content %}

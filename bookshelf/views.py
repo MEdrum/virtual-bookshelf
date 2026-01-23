@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Shelf, Book, GENRES, LANGUAGES
 import uuid
-from datetime import datetime, timezone
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+from .forms import ShelfForm
 
 def bookshelves_overview(request):
     """Renders the view bookshelves page
@@ -32,11 +34,8 @@ def view_book(request, shelfid, isbn):
         book = get_object_or_404(Book, isbn=isbn, shelfID=shelf)
     except Exception as err:
         book = get_object_or_404(Book, bookID=isbn, shelfID=shelf)
-    #shelves = Shelf.objects.prefetch_related(shelfid).all()
-    #shelves = Shelf.objects.prefetch_related('book_set').all()
     if book.year_of_publication:
         pass
-        #book.year_of_publication = datetime.utcfromtimestamp(book.year_of_publication).strftime("%d.%m.%Y")
     else:
         book.year_of_publication = "Unknown"
     return render(
@@ -129,6 +128,25 @@ def view_shelf(request, shelfid):
     """
     shelf = get_object_or_404(Shelf, shelfID=shelfid)
     print("shelf", type(shelf))
-    #shelves = Shelf.objects.prefetch_related(shelfid).all()
-    #shelves = Shelf.objects.prefetch_related('book_set').all()
     return render(request, "pages/bookshelf_view_shelf.html", {"bookshelf": shelf})
+
+@login_required
+def add_bookshelf(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        latitude = request.POST.get("latitude")
+        longitude = request.POST.get("longitude")
+
+        Shelf.objects.create(
+            shelfID=uuid.uuid4(),
+            name=name,
+            latitude=latitude,
+            longitude=longitude,
+            ownerID=request.user
+        )
+
+        return redirect("bookshelves")
+
+    return render(request, "pages/create_shelf.html")
+
+
