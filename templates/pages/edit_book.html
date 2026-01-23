@@ -25,19 +25,18 @@
     <input type="text" id="isbn" name="isbn" value="{{ book.isbn|default:'' }}">
     <label for="genre">Genre:</label><br>
     <select name="genre" id="genre" >
-        <option value="romance">Romance</option>
-        <option value="fantasy">Fantasy</option>
-        <option value="non-fiction">Non-fiction</option>
-        <option value="thriller">Thriller</option>
+        {% for genre in genres %}
+        <option value="{{ genre }}" {% if genre == current_genre or '' %}selected{% endif %}>{{ genre }}</option>
+        {% endfor %}
     </select>
     <label for="language">Language:</label><br>
-    <select name="language" id="language">
-        <option value="german">German</option>
-        <option value="english">English</option>
-        <option value="spanish">Spanish</option>
+    <select name="language" id="language" >
+        {% for language in languages %}
+        <option value="{{ language }}" {% if language == current_language or '' %}selected{% endif %}>{{ language }}</option>
+        {% endfor %}
     </select>
-    <label for="pubDate">Pub. date:</label><br>
-    <input type="date" id="pubDate" name="pubDate"><br>
+    <label for="pubYear">Pub. year:</label><br>
+    <input type="number" id="pubYear" name="pubYear" value="{{ book.year_of_publication|default:'' }}"><br>
     <label for="borrowable">Borrowable?</label><br>
     <input type="checkbox" id="borrowable" name="borrowable" checked><br>
     <label for="visibility">Visibility:</label><br>

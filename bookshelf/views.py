@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Shelf, Book
+from .models import Shelf, Book, GENRES, LANGUAGES
 import uuid
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from .forms import ShelfForm
-
 
 def bookshelves_overview(request):
     """Renders the view bookshelves page
@@ -35,7 +34,19 @@ def view_book(request, shelfid, isbn):
         book = get_object_or_404(Book, isbn=isbn, shelfID=shelf)
     except Exception as err:
         book = get_object_or_404(Book, bookID=isbn, shelfID=shelf)
-    return render(request, "pages/view_book.html", {"shelf": shelf, "book": book})
+    if book.year_of_publication:
+        pass
+    else:
+        book.year_of_publication = "Unknown"
+    return render(
+        request,
+        "pages/view_book.html",
+        {
+            "shelf": shelf,
+            "book": book,
+            "current_genre": book.genre.title(),
+            "current_language": book.language.title()
+        })
 
 def process_book_form(request, shelfid, bookid=None):
     """Creates or edits a book depending on the optional atribute bookid
@@ -58,7 +69,7 @@ def process_book_form(request, shelfid, bookid=None):
         book = None
 
     if request.method == 'POST':
-        if book is None:
+        if not book:
             book = Book(
                 bookID=uuid.uuid4(),
                 ownerID=request.user,
@@ -68,9 +79,18 @@ def process_book_form(request, shelfid, bookid=None):
         book.title = request.POST['title']
         book.author = request.POST['author']
         book.isbn = request.POST['isbn']
-        book.genre = request.POST['genre']
-        book.language = request.POST['language']
-        #book.year_of_publication = request.POST['pubDate']
+        INV_GENRES = {v: k for k, v in GENRES}
+        book.genre = INV_GENRES.get(request.POST['genre'], "")
+        INV_LANGUAGES = {v: k for k, v in LANGUAGES}
+        book.language = INV_LANGUAGES.get(request.POST['language'], "")
+        book.year_of_publication = request.POST['pubYear']
+        #print("pubdate:", request.POST['pubDate'])
+        if request.POST['pubYear']:
+            pass
+            #dt = datetime.strptime(request.POST['pubDate'], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            #book.year_of_publication = int(dt.timestamp())
+        else:
+            book.year_of_publication = 0
         book.visibility = request.POST['visibility']
         book.borrowable = 'borrowable' in request.POST
         book.coverURL = request.POST['coverURL']
@@ -78,9 +98,21 @@ def process_book_form(request, shelfid, bookid=None):
         book.save()
         return render(request, "pages/new_book_done.html", {"is_edit": is_edit})
 
+    current_genre = ""
+    current_language = ""
+    if book:
+        if book.genre:
+            current_genre = book.genre.title()
+        if book.language:
+            current_language = book.language.title()
+
     return render(request, "pages/edit_book.html", {
         "shelf": shelf,
         "book": book,
+        "genres": dict(GENRES).values(),
+        "current_genre": current_genre,
+        "languages": dict(LANGUAGES).values(),
+        "current_language": current_language,
         "is_edit": book is not None
     })
 
