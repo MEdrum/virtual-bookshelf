@@ -41,24 +41,19 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
 
-
-
-
-
-
-◇  What's next? ────────────────────────────────────────────────────────────────╮
-│                                                                               │
-│  🧩 Add-on steps                                                              │
-│                                                                               │
-│    drizzle:                                                                   │
-│      - Check DATABASE_URL in .env and adjust it to your needs                 │
-│      - Run npm run db:push to update your database schema                     │
-│    better-auth:                                                               │
-│      - Run npm run auth:schema to generate the auth schema                    │
-│      - Run npm run db:push to update your database                            │
-│      - Check ORIGIN & BETTER_AUTH_SECRET in .env and adjust it to your needs  │
-│      - Visit /demo/better-auth route to view the demo                         │
-│                                                                               │
-│  Stuck? Visit us at https://svelte.dev/chat                                   │
-│                                                                               │
+◇ What's next? ─────────────────────────────────────────────────────────────────╮
+│																				│
+│ 🧩 Add-on steps																│
+│																				│
+│ drizzle:																		│
+│ - Check DATABASE_URL in .env and adjust it to your needs						│
+│ - Run npm run db:push to update your database schema							│
+│ better-auth:																	│
+│ - Run npm run auth:schema to generate the auth schema							│
+│ - Run npm run db:push to update your database									│
+│ - Check ORIGIN & BETTER_AUTH_SECRET in .env and adjust it to your needs		│
+│ - Visit /demo/better-auth route to view the demo								│
+│																				│
+│ Stuck? Visit us at https://svelte.dev/chat									│
+│																				│
 ├───────────────────────────────────────────────────────────────────────────────╯
