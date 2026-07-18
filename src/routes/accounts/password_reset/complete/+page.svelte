@@ -1,0 +1,7 @@
+<script lang="ts">
+	import { resolve } from '$app/paths';
+</script>
+
+<h2>Password reset complete</h2>
+<p>Your password has been set. You may go ahead and log in now.</p>
+<a href={resolve('/accounts/login')}>Log In</a>
